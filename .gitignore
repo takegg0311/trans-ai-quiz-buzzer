@@ -1,0 +1,8 @@
+# 会場ごとの設定（参加 URL や Cloud Run 版の参加キーを含む）
+config.toml
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.DS_Store
