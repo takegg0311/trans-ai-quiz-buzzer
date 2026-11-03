@@ -1,0 +1,40 @@
+# trans-ai-quiz-buzzer の設定例。
+# config.toml にコピーして書き換える（config.toml は Git に含めない）。
+#
+#   cp config.example.toml config.toml
+
+# 参加者用 URL。出題者画面（サーバの起動ログ）に出る「参加者用」をそのまま貼る。
+#   ローカル版:     http://192.168.2.102:8000/player
+#                   http://<Macのホスト名>.local:8000/player でもよい
+#   Cloud Run 版:   https://…/player?event=…&key=…（大会ごとに変わる）
+# 起動時に --url を付けると、こちらより優先される。
+url = "http://192.168.2.102:8000/player"
+
+# サーバへの接続状態を示す LED の GPIO 番号（BCM）。使わない場合は行ごと消す。
+status_led = 22
+
+# ボタン 1 つにつき [[buttons]] を 1 つ書く。1 ボタン = 参加者 1 人。
+#   name   投影に出す名前（12 文字以内）。変えて再起動すると、同じ参加者のまま改名される
+#   button ボタンを繋いだ GPIO 番号（BCM）
+#   led    回答権 LED を繋いだ GPIO 番号（BCM）。LED が無ければ行ごと消す
+# GPIO 番号の割り当ては README の「ピンの割り当て」を参照。
+
+[[buttons]]
+name = "物理1"
+button = 17
+led = 27
+
+# [[buttons]]
+# name = "物理2"
+# button = 5
+# led = 6
+
+# [[buttons]]
+# name = "物理3"
+# button = 13
+# led = 19
+
+# [[buttons]]
+# name = "物理4"
+# button = 26
+# led = 16

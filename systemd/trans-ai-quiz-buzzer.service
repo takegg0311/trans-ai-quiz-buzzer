@@ -1,0 +1,22 @@
+# ユーザーサービスとして動かす（root 不要）。
+# インストール手順は README の「自動起動」を参照。
+#
+# リポジトリを ~/trans-ai-quiz-buzzer 以外に置いた場合は、
+# WorkingDirectory と ExecStart のパスを書き換える。
+
+[Unit]
+Description=trans-ai-quiz physical buzzer relay
+# ユーザーサービスからはネットワークの準備完了を待てないが、
+# 中継器自身が繋がるまで再接続を続けるので問題ない
+
+[Service]
+Type=simple
+WorkingDirectory=%h/trans-ai-quiz-buzzer
+ExecStart=/usr/bin/python3 %h/trans-ai-quiz-buzzer/buzz_relay.py --config %h/trans-ai-quiz-buzzer/config.toml
+# 大会終了などで全ボタンが接続をやめたときは正常終了（0）する。そのときは再起動しない
+Restart=on-failure
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
