@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; fill: #64748b; }
+      .box-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 13px; font-weight: bold; fill: #334155; }
+      .pin-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 13px; font-weight: 600; fill: #0f172a; }
+      .pin-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 11px; fill: #64748b; }
+      .term-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+      .note-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 11.5px; fill: #475569; }
+      .wire-gpio { stroke: #2563eb; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .pin-dot { fill: #ffffff; stroke-width: 2.5; }
+      .pin-dot-gpio { stroke: #2563eb; }
+      .pin-dot-gnd { stroke: #1e293b; }
+    </style>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="2" y="2" width="756" height="296" class="bg" />
+
+  <!-- Header -->
+  <text x="24" y="32" class="title">ボタンの配線（Raspberry Pi 内部プルアップ利用）</text>
+  <text x="24" y="50" class="subtitle">アーケードボタンのスイッチ端子を GPIO と GND に直結します（Pi 内部のプルアップを使うため外付け抵抗は不要です）</text>
+
+  <!-- Raspberry Pi Box -->
+  <g transform="translate(30, 75)">
+    <rect x="0" y="0" width="200" height="145" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="14" y="24" class="box-label">Raspberry Pi</text>
+
+    <!-- Internal pull-up note -->
+    <rect x="14" y="36" width="172" height="34" rx="4" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+    <text x="20" y="50" style="font-family: sans-serif; font-size: 10px; fill: #64748b;">内部プルアップ有効 (3.3V)</text>
+    <text x="20" y="63" style="font-family: sans-serif; font-size: 10px; fill: #94a3b8;">ソフトウェアで設定 (gpiozero: pull_up=True)</text>
+
+    <!-- GPIO Pin -->
+    <text x="20" y="98" class="pin-label">GPIO（ボタン）</text>
+    <text x="20" y="112" class="pin-sub">例: GPIO17（物理 Pin 11）</text>
+    <circle cx="200" cy="100" r="5" class="pin-dot pin-dot-gpio" />
+
+    <!-- GND Pin -->
+    <text x="20" y="132" class="pin-label">GND 端子</text>
+    <text x="90" y="132" class="pin-sub">例: Pin 9 / 14</text>
+    <circle cx="200" cy="132" r="5" class="pin-dot pin-dot-gnd" />
+  </g>
+
+  <!-- Wires -->
+  <path d="M 230 175 L 470 175" class="wire-gpio" />
+  <path d="M 230 207 L 470 207" class="wire-gnd" />
+
+  <!-- Wire Labels -->
+  <rect x="310" y="157" width="84" height="20" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+  <text x="352" y="171" text-anchor="middle" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #1d4ed8;">GPIO 信号線</text>
+
+  <rect x="320" y="211" width="64" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="352" y="225" text-anchor="middle" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #334155;">GND</text>
+
+  <!-- Arcade Button Box -->
+  <g transform="translate(470, 75)">
+    <rect x="0" y="0" width="250" height="145" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="16" y="24" class="box-label">アーケードボタン（OBSF-30 等）</text>
+
+    <!-- Terminal 1 (NO) -->
+    <circle cx="0" cy="100" r="5" class="pin-dot pin-dot-gpio" />
+    <text x="14" y="98" class="term-label">端子 1（NO / 常開接点）</text>
+    <text x="14" y="112" class="pin-sub">押したときに導通する端子</text>
+
+    <!-- Terminal 2 (COM) -->
+    <circle cx="0" cy="132" r="5" class="pin-dot pin-dot-gnd" />
+    <text x="14" y="132" class="term-label">端子 2（COM / 共通端子）</text>
+
+    <!-- Switch Schematic Symbol -->
+    <g transform="translate(170, 80)">
+      <!-- Switch body outline -->
+      <circle cx="30" cy="30" r="28" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" />
+      <circle cx="30" cy="30" r="21" fill="#fef2f2" stroke="#ef4444" stroke-width="2" />
+      <!-- Contacts -->
+      <circle cx="15" cy="23" r="2.5" fill="#1e293b" />
+      <circle cx="45" cy="23" r="2.5" fill="#1e293b" />
+      <!-- Lever (open) -->
+      <line x1="16" y1="21" x2="43" y2="10" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" />
+      <text x="30" y="68" text-anchor="middle" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #64748b;">PUSH</text>
+    </g>
+
+    <!-- Warning badge for NC -->
+    <rect x="14" y="38" width="222" height="24" rx="4" fill="#fef3c7" stroke="#fde68a" />
+    <text x="20" y="54" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #92400e;">⚠️ 端子が3つの場合: COM と NO を使用（NCは未使用）</text>
+  </g>
+
+  <!-- Bottom Notes -->
+  <g transform="translate(24, 238)">
+    <rect x="0" y="0" width="712" height="46" rx="6" fill="#f1f5f9" />
+    <text x="14" y="19" class="note-text">• 通常時: GPIO は内部プルアップにより HIGH（3.3V）です。ボタンを押すと端子が短絡し LOW（GND）を検出します。</text>
+    <text x="14" y="35" class="note-text">• 延長時のノイズ対策: ケーブルを数 m に延ばす場合は、GPIO と 3.3V の間に外付けで 10kΩ 抵抗を足すと安定します。</text>
+  </g>
+</svg>

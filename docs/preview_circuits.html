@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Circuit Diagrams Preview</title>
+  <style>
+    body { font-family: sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
+    .card { background: #1e293b; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+    h2 { margin-top: 0; color: #38bdf8; }
+    img { max-width: 100%; height: auto; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Raspberry Pi 回路図プレビュー</h1>
+  <div class="card">
+    <h2>1. ボタン配線</h2>
+    <img src="images/circuit_button.svg" alt="ボタン配線">
+  </div>
+  <div class="card">
+    <h2>2. LED配線（3.3V直接点灯：試作）</h2>
+    <img src="images/circuit_led_3v3.svg" alt="LED 3.3V">
+  </div>
+  <div class="card">
+    <h2>3. LED配線（5Vトランジスタ駆動：LED内蔵ボタン用）</h2>
+    <img src="images/circuit_led_5v_transistor.svg" alt="LED 5V トランジスタ">
+  </div>
+  <div class="card">
+    <h2>4. 1席分総合配線（ボタン ＋ 回答権LED）</h2>
+    <img src="images/circuit_button_and_led.svg" alt="総合配線">
+  </div>
+  <div class="card">
+    <h2>5. 4席分総合配線（GPIO 40Pin ヘッダ対応）</h2>
+    <img src="images/circuit_4players_gpio40pin.svg" alt="4席分総合配線">
+  </div>
+</body>
+</html>
