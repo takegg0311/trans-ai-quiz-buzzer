@@ -1,0 +1,689 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 800" width="1140" height="800">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 17px; font-weight: bold; fill: #0f172a; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; fill: #64748b; }
+      .badge { font-family: sans-serif; font-size: 10.5px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="2" y="2" width="1136" height="796" class="bg" />
+
+  <!-- Header -->
+  <text x="24" y="32" class="title">4 席分（ボタン 1〜4 ＋ 回答権 LED 1〜4）の GPIO 40Pin 配線図</text>
+  <text x="24" y="50" class="subtitle">Raspberry Pi の 40ピンヘッダ（2列×20ピン）と各席のアーケードボタン（LED内蔵・2SC1815駆動）の結線</text>
+
+  <!-- Legend Badges -->
+  <g transform="translate(640, 26)">
+    <!-- 5V -->
+    <rect x="0" y="0" width="70" height="20" rx="4" fill="#fef2f2" stroke="#fca5a5" />
+    <circle cx="10" cy="10" r="4" fill="#dc2626" />
+    <text x="20" y="14" class="badge" fill="#b91c1c">5V 電源</text>
+
+    <!-- GND -->
+    <rect x="80" y="0" width="60" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+    <circle cx="90" cy="10" r="4" fill="#1e293b" />
+    <text x="100" y="14" class="badge" fill="#334155">GND</text>
+
+    <!-- Button -->
+    <rect x="150" y="0" width="95" height="20" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+    <circle cx="160" cy="10" r="4" fill="#2563eb" />
+    <text x="170" y="14" class="badge" fill="#1d4ed8">ボタン入力 (NO)</text>
+
+    <!-- LED -->
+    <rect x="255" y="0" width="90" height="20" rx="4" fill="#f0fdf4" stroke="#bbf7d0" />
+    <circle cx="265" cy="10" r="4" fill="#16a34a" />
+    <text x="275" y="14" class="badge" fill="#15803d">LED制御信号</text>
+
+    <!-- Transistor Load -->
+    <rect x="355" y="0" width="105" height="20" rx="4" fill="#fff7ed" stroke="#fed7aa" />
+    <circle cx="365" cy="10" r="4" fill="#ea580c" />
+    <text x="375" y="14" class="badge" fill="#c2410c">コレクタ負荷 (−)</text>
+  </g>
+
+  <!-- Raspberry Pi 40-Pin Header Container -->
+  <g id="gpio-header">
+    <!-- Board Outline Card -->
+    <rect x="14" y="75" width="226" height="685" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="127" y="98" text-anchor="middle" style="font-family: sans-serif; font-size: 12.5px; font-weight: bold; fill: #1e293b;">Raspberry Pi GPIO (40Pin)</text>
+
+    <!-- Plastic Socket Body (2x20 pins) -->
+    <rect x="103" y="104" width="48" height="562" rx="4" fill="#0f172a" />
+
+    <!-- Pins and Labels -->
+    
+        <!-- Row 0: Pin 1 -->
+        <circle cx="115" cy="118" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="122" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">3.3V [1]</text>
+        
+        <!-- Row 0: Pin 2 -->
+        <circle cx="139" cy="118" r="5.5" fill="#dc2626" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="122" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #dc2626;">[2] 5V</text>
+        
+        <!-- Row 1: Pin 3 -->
+        <circle cx="115" cy="146" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="150" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 2 [3]</text>
+        
+        <!-- Row 1: Pin 4 -->
+        <circle cx="139" cy="146" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="150" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[4] 5V</text>
+        
+        <!-- Row 2: Pin 5 -->
+        <circle cx="115" cy="174" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="178" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 3 [5]</text>
+        
+        <!-- Row 2: Pin 6 -->
+        <circle cx="139" cy="174" r="5.5" fill="#1e293b" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="178" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #1e293b;">[6] GND</text>
+        
+        <!-- Row 3: Pin 7 -->
+        <circle cx="115" cy="202" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="206" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 4 [7]</text>
+        
+        <!-- Row 3: Pin 8 -->
+        <circle cx="139" cy="202" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="206" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[8] GPIO 14</text>
+        
+        <!-- Row 4: Pin 9 -->
+        <circle cx="115" cy="230" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="234" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GND [9]</text>
+        
+        <!-- Row 4: Pin 10 -->
+        <circle cx="139" cy="230" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="234" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[10] GPIO 15</text>
+        
+        <!-- Row 5: Pin 11 -->
+        <circle cx="115" cy="258" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="262" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #1d4ed8;">GPIO 17 [11]</text>
+        
+        <!-- Row 5: Pin 12 -->
+        <circle cx="139" cy="258" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="262" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[12] GPIO 18</text>
+        
+        <!-- Row 6: Pin 13 -->
+        <circle cx="115" cy="286" r="5.5" fill="#16a34a" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="290" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #15803d;">GPIO 27 [13]</text>
+        
+        <!-- Row 6: Pin 14 -->
+        <circle cx="139" cy="286" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="290" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[14] GND</text>
+        
+        <!-- Row 7: Pin 15 -->
+        <circle cx="115" cy="314" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="318" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 22 [15]</text>
+        
+        <!-- Row 7: Pin 16 -->
+        <circle cx="139" cy="314" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="318" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[16] GPIO 23</text>
+        
+        <!-- Row 8: Pin 17 -->
+        <circle cx="115" cy="342" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="346" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">3.3V [17]</text>
+        
+        <!-- Row 8: Pin 18 -->
+        <circle cx="139" cy="342" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="346" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[18] GPIO 24</text>
+        
+        <!-- Row 9: Pin 19 -->
+        <circle cx="115" cy="370" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="374" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 10 [19]</text>
+        
+        <!-- Row 9: Pin 20 -->
+        <circle cx="139" cy="370" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="374" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[20] GND</text>
+        
+        <!-- Row 10: Pin 21 -->
+        <circle cx="115" cy="398" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="402" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 9 [21]</text>
+        
+        <!-- Row 10: Pin 22 -->
+        <circle cx="139" cy="398" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="402" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[22] GPIO 25</text>
+        
+        <!-- Row 11: Pin 23 -->
+        <circle cx="115" cy="426" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="430" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 11 [23]</text>
+        
+        <!-- Row 11: Pin 24 -->
+        <circle cx="139" cy="426" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="430" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[24] GPIO 8</text>
+        
+        <!-- Row 12: Pin 25 -->
+        <circle cx="115" cy="454" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="458" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GND [25]</text>
+        
+        <!-- Row 12: Pin 26 -->
+        <circle cx="139" cy="454" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="458" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[26] GPIO 7</text>
+        
+        <!-- Row 13: Pin 27 -->
+        <circle cx="115" cy="482" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="486" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GPIO 0 [27]</text>
+        
+        <!-- Row 13: Pin 28 -->
+        <circle cx="139" cy="482" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="486" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[28] GPIO 1</text>
+        
+        <!-- Row 14: Pin 29 -->
+        <circle cx="115" cy="510" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="514" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #1d4ed8;">GPIO 5 [29]</text>
+        
+        <!-- Row 14: Pin 30 -->
+        <circle cx="139" cy="510" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="514" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[30] GND</text>
+        
+        <!-- Row 15: Pin 31 -->
+        <circle cx="115" cy="538" r="5.5" fill="#16a34a" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="542" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #15803d;">GPIO 6 [31]</text>
+        
+        <!-- Row 15: Pin 32 -->
+        <circle cx="139" cy="538" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="542" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[32] GPIO 12</text>
+        
+        <!-- Row 16: Pin 33 -->
+        <circle cx="115" cy="566" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="570" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #1d4ed8;">GPIO 13 [33]</text>
+        
+        <!-- Row 16: Pin 34 -->
+        <circle cx="139" cy="566" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="570" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[34] GND</text>
+        
+        <!-- Row 17: Pin 35 -->
+        <circle cx="115" cy="594" r="5.5" fill="#16a34a" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="598" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #15803d;">GPIO 19 [35]</text>
+        
+        <!-- Row 17: Pin 36 -->
+        <circle cx="139" cy="594" r="5.5" fill="#16a34a" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="598" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #15803d;">[36] GPIO 16</text>
+        
+        <!-- Row 18: Pin 37 -->
+        <circle cx="115" cy="622" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="626" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: bold; fill: #1d4ed8;">GPIO 26 [37]</text>
+        
+        <!-- Row 18: Pin 38 -->
+        <circle cx="139" cy="622" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="626" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[38] GPIO 20</text>
+        
+        <!-- Row 19: Pin 39 -->
+        <circle cx="115" cy="650" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="103" y="654" text-anchor="end" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">GND [39]</text>
+        
+        <!-- Row 19: Pin 40 -->
+        <circle cx="139" cy="650" r="5.5" fill="#cbd5e1" stroke="#ffffff" stroke-width="1.2" />
+        <text x="151" y="654" text-anchor="start" style="font-family: sans-serif; font-size: 10.5px; font-weight: normal; fill: #94a3b8;">[40] GPIO 21</text>
+        
+  </g>
+
+  <!-- Wires & Buses -->
+  
+    <!-- Underlay for Wire Crossings (White borders to show jumps) -->
+    <g stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 5V Bus Main Line -->
+      <path d="M 139 118 L 580 118 L 580 717" />
+      <!-- GND Bus Main Line -->
+      <path d="M 139 174 L 550 174 L 550 741" />
+
+      <!-- Horizontal branches from Buses to Seats -->
+      <!-- 5V Branches -->
+      <path d="M 580 177 L 640 177" />
+      <path d="M 580 357 L 640 357" />
+      <path d="M 580 537 L 640 537" />
+      <path d="M 580 717 L 640 717" />
+
+      <!-- GND Branches -->
+      <path d="M 550 201 L 640 201" />
+      <path d="M 550 381 L 640 381" />
+      <path d="M 550 561 L 640 561" />
+      <path d="M 550 741 L 640 741" />
+
+      <!-- Seat 1 Signals -->
+      <path d="M 115 258 L 260 258 L 260 121 L 640 121" />
+      <path d="M 115 286 L 290 286 L 290 149 L 640 149" />
+
+      <!-- Seat 2 Signals -->
+      <path d="M 115 510 L 320 510 L 320 301 L 640 301" />
+      <path d="M 115 538 L 350 538 L 350 329 L 640 329" />
+
+      <!-- Seat 3 Signals -->
+      <path d="M 115 566 L 380 566 L 380 481 L 640 481" />
+      <path d="M 115 594 L 127 594 L 127 582 L 410 582 L 410 509 L 640 509" />
+
+      <!-- Seat 4 Signals -->
+      <path d="M 139 594 L 440 594 L 440 689 L 640 689" />
+      <path d="M 115 622 L 470 622 L 470 661 L 640 661" />
+    </g>
+
+    <!-- Actual Colored Wires -->
+    <!-- 1. 5V Power Lines (Red) -->
+    <g stroke="#dc2626" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 139 118 L 580 118 L 580 717" />
+      <path d="M 580 177 L 640 177" />
+      <path d="M 580 357 L 640 357" />
+      <path d="M 580 537 L 640 537" />
+      <path d="M 580 717 L 640 717" />
+      <circle cx="580" cy="177" r="3.5" fill="#dc2626" />
+      <circle cx="580" cy="357" r="3.5" fill="#dc2626" />
+      <circle cx="580" cy="537" r="3.5" fill="#dc2626" />
+    </g>
+
+    <!-- 2. GND Lines (Dark Slate) -->
+    <g stroke="#1e293b" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 139 174 L 550 174 L 550 741" />
+      <path d="M 550 201 L 640 201" />
+      <path d="M 550 381 L 640 381" />
+      <path d="M 550 561 L 640 561" />
+      <path d="M 550 741 L 640 741" />
+      <circle cx="550" cy="201" r="3.5" fill="#1e293b" />
+      <circle cx="550" cy="381" r="3.5" fill="#1e293b" />
+      <circle cx="550" cy="561" r="3.5" fill="#1e293b" />
+    </g>
+
+    <!-- 3. Button Signals (Blue) -->
+    <g stroke="#2563eb" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Seat 1 Button: Pin 11 (GPIO 17) -->
+      <path d="M 115 258 L 260 258 L 260 121 L 640 121" />
+      <!-- Seat 2 Button: Pin 29 (GPIO 5) -->
+      <path d="M 115 510 L 320 510 L 320 301 L 640 301" />
+      <!-- Seat 3 Button: Pin 33 (GPIO 13) -->
+      <path d="M 115 566 L 380 566 L 380 481 L 640 481" />
+      <!-- Seat 4 Button: Pin 37 (GPIO 26) -->
+      <path d="M 115 622 L 470 622 L 470 661 L 640 661" />
+    </g>
+
+    <!-- 4. LED Signals (Green) -->
+    <g stroke="#16a34a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Seat 1 LED: Pin 13 (GPIO 27) -->
+      <path d="M 115 286 L 290 286 L 290 149 L 640 149" />
+      <!-- Seat 2 LED: Pin 31 (GPIO 6) -->
+      <path d="M 115 538 L 350 538 L 350 329 L 640 329" />
+      <!-- Seat 3 LED: Pin 35 (GPIO 19 - step over Pin 36) -->
+      <path d="M 115 594 L 127 594 L 127 582 L 410 582 L 410 509 L 640 509" />
+      <!-- Seat 4 LED: Pin 36 (GPIO 16) -->
+      <path d="M 139 594 L 440 594 L 440 689 L 640 689" />
+    </g>
+    
+
+  <!-- Seat Modules (1 to 4) -->
+  
+    <!-- Seat 1 Module -->
+    <g transform="translate(640, 75)">
+      <!-- Outer Card -->
+      <rect x="0" y="0" width="460" height="145" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <!-- Header -->
+      <rect x="0" y="0" width="460" height="26" rx="8" fill="#f1f5f9" />
+      <rect x="0" y="16" width="460" height="10" fill="#f1f5f9" />
+      <text x="12" y="18" style="font-family: sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b;">席 1</text>
+      <text x="60" y="18" style="font-family: sans-serif; font-size: 11px; fill: #64748b;">(ボタン: <tspan fill="#2563eb" font-weight="600">GPIO 17 [Pin 11]</tspan> ／ LED: <tspan fill="#16a34a" font-weight="600">GPIO 27 [Pin 13]</tspan>)</text>
+
+      <!-- Terminals Left Edge -->
+      <!-- Button Input (NO) -->
+      <circle cx="0" cy="46" r="4.5" fill="#2563eb" />
+      <text x="8" y="50" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #2563eb;">ボタン信号 (NO)</text>
+
+      <!-- LED GPIO Input -->
+      <circle cx="0" cy="74" r="4.5" fill="#16a34a" />
+      <text x="8" y="78" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #16a34a;">LED 信号</text>
+
+      <!-- 5V Input -->
+      <circle cx="0" cy="102" r="4.5" fill="#dc2626" />
+      <text x="8" y="106" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #dc2626;">5V 電源</text>
+
+      <!-- GND Input -->
+      <circle cx="0" cy="126" r="4.5" fill="#1e293b" />
+      <text x="8" y="130" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #1e293b;">GND</text>
+
+      <!-- Internal Components -->
+      <!-- 1k Resistor for LED -->
+      <line x1="0" y1="74" x2="105" y2="74" stroke="#16a34a" stroke-width="2" />
+      <g transform="translate(105, 66)">
+        <rect x="0" y="0" width="38" height="16" rx="2" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+        <text x="19" y="11" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold;">1kΩ</text>
+      </g>
+      <line x1="143" y1="74" x2="175" y2="74" stroke="#16a34a" stroke-width="2" />
+
+      <!-- Transistor 2SC1815 -->
+      <g transform="translate(195, 74)">
+        <circle cx="0" cy="0" r="18" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+        <line x1="-7" y1="-10" x2="-7" y2="10" stroke="#1e293b" stroke-width="2" />
+        <!-- Base -->
+        <line x1="-20" y1="0" x2="-7" y2="0" stroke="#16a34a" stroke-width="2" />
+        <!-- Collector -->
+        <line x1="-7" y1="-5" x2="8" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <line x1="8" y1="-13" x2="18" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <!-- Emitter -->
+        <line x1="-7" y1="5" x2="8" y2="13" stroke="#1e293b" stroke-width="2" />
+        <line x1="8" y1="13" x2="18" y2="13" stroke="#1e293b" stroke-width="2" />
+        <polygon points="7,12 1,7 2,14" fill="#1e293b" />
+        <!-- Labels -->
+        <text x="-1" y="-21" text-anchor="middle" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #475569;">2SC1815</text>
+      </g>
+
+      <!-- Transistor Emitter (195+18=213, 74+13=87) to GND Line -->
+      <path d="M 213 87 L 230 87 L 230 126 L 0 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="230" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Transistor Collector (195+18=213, 74-13=61) to LED Cathode -->
+      <path d="M 213 61 L 245 61 L 245 118 L 290 118" stroke="#ea580c" stroke-width="2" fill="none" />
+
+      <!-- 5V to LED Anode -->
+      <path d="M 0 102 L 290 102" stroke="#dc2626" stroke-width="2" fill="none" />
+
+      <!-- Button NO to Switch Terminal 1 -->
+      <path d="M 0 46 L 290 46" stroke="#2563eb" stroke-width="2" fill="none" />
+
+      <!-- Button COM to GND -->
+      <path d="M 290 64 L 270 64 L 270 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="270" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Arcade Button Unit Box -->
+      <g transform="translate(290, 34)">
+        <rect x="0" y="0" width="160" height="98" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+        
+        <!-- Switch Section -->
+        <rect x="4" y="4" width="152" height="42" rx="4" fill="#eff6ff" />
+        <circle cx="0" cy="12" r="3" fill="#2563eb" />
+        <text x="8" y="15" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #1d4ed8;">スイッチ NO</text>
+        <circle cx="0" cy="30" r="3" fill="#1e293b" />
+        <text x="8" y="33" style="font-family: sans-serif; font-size: 9.5px; fill: #334155;">スイッチ COM</text>
+        <circle cx="132" cy="21" r="14" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+        <circle cx="132" cy="21" r="10" fill="#ef4444" />
+
+        <!-- LED Section -->
+        <rect x="4" y="50" width="152" height="44" rx="4" fill="#fef2f2" />
+        <circle cx="0" cy="68" r="3" fill="#dc2626" />
+        <text x="8" y="71" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #dc2626;">LED (＋)</text>
+        <circle cx="0" cy="84" r="3" fill="#ea580c" />
+        <text x="8" y="87" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #ea580c;">LED (−)</text>
+        <text x="132" y="75" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold; fill: #b91c1c;">LED内蔵</text>
+      </g>
+    </g>
+        
+    <!-- Seat 2 Module -->
+    <g transform="translate(640, 255)">
+      <!-- Outer Card -->
+      <rect x="0" y="0" width="460" height="145" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <!-- Header -->
+      <rect x="0" y="0" width="460" height="26" rx="8" fill="#f1f5f9" />
+      <rect x="0" y="16" width="460" height="10" fill="#f1f5f9" />
+      <text x="12" y="18" style="font-family: sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b;">席 2</text>
+      <text x="60" y="18" style="font-family: sans-serif; font-size: 11px; fill: #64748b;">(ボタン: <tspan fill="#2563eb" font-weight="600">GPIO 5 [Pin 29]</tspan> ／ LED: <tspan fill="#16a34a" font-weight="600">GPIO 6 [Pin 31]</tspan>)</text>
+
+      <!-- Terminals Left Edge -->
+      <!-- Button Input (NO) -->
+      <circle cx="0" cy="46" r="4.5" fill="#2563eb" />
+      <text x="8" y="50" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #2563eb;">ボタン信号 (NO)</text>
+
+      <!-- LED GPIO Input -->
+      <circle cx="0" cy="74" r="4.5" fill="#16a34a" />
+      <text x="8" y="78" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #16a34a;">LED 信号</text>
+
+      <!-- 5V Input -->
+      <circle cx="0" cy="102" r="4.5" fill="#dc2626" />
+      <text x="8" y="106" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #dc2626;">5V 電源</text>
+
+      <!-- GND Input -->
+      <circle cx="0" cy="126" r="4.5" fill="#1e293b" />
+      <text x="8" y="130" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #1e293b;">GND</text>
+
+      <!-- Internal Components -->
+      <!-- 1k Resistor for LED -->
+      <line x1="0" y1="74" x2="105" y2="74" stroke="#16a34a" stroke-width="2" />
+      <g transform="translate(105, 66)">
+        <rect x="0" y="0" width="38" height="16" rx="2" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+        <text x="19" y="11" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold;">1kΩ</text>
+      </g>
+      <line x1="143" y1="74" x2="175" y2="74" stroke="#16a34a" stroke-width="2" />
+
+      <!-- Transistor 2SC1815 -->
+      <g transform="translate(195, 74)">
+        <circle cx="0" cy="0" r="18" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+        <line x1="-7" y1="-10" x2="-7" y2="10" stroke="#1e293b" stroke-width="2" />
+        <!-- Base -->
+        <line x1="-20" y1="0" x2="-7" y2="0" stroke="#16a34a" stroke-width="2" />
+        <!-- Collector -->
+        <line x1="-7" y1="-5" x2="8" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <line x1="8" y1="-13" x2="18" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <!-- Emitter -->
+        <line x1="-7" y1="5" x2="8" y2="13" stroke="#1e293b" stroke-width="2" />
+        <line x1="8" y1="13" x2="18" y2="13" stroke="#1e293b" stroke-width="2" />
+        <polygon points="7,12 1,7 2,14" fill="#1e293b" />
+        <!-- Labels -->
+        <text x="-1" y="-21" text-anchor="middle" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #475569;">2SC1815</text>
+      </g>
+
+      <!-- Transistor Emitter (195+18=213, 74+13=87) to GND Line -->
+      <path d="M 213 87 L 230 87 L 230 126 L 0 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="230" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Transistor Collector (195+18=213, 74-13=61) to LED Cathode -->
+      <path d="M 213 61 L 245 61 L 245 118 L 290 118" stroke="#ea580c" stroke-width="2" fill="none" />
+
+      <!-- 5V to LED Anode -->
+      <path d="M 0 102 L 290 102" stroke="#dc2626" stroke-width="2" fill="none" />
+
+      <!-- Button NO to Switch Terminal 1 -->
+      <path d="M 0 46 L 290 46" stroke="#2563eb" stroke-width="2" fill="none" />
+
+      <!-- Button COM to GND -->
+      <path d="M 290 64 L 270 64 L 270 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="270" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Arcade Button Unit Box -->
+      <g transform="translate(290, 34)">
+        <rect x="0" y="0" width="160" height="98" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+        
+        <!-- Switch Section -->
+        <rect x="4" y="4" width="152" height="42" rx="4" fill="#eff6ff" />
+        <circle cx="0" cy="12" r="3" fill="#2563eb" />
+        <text x="8" y="15" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #1d4ed8;">スイッチ NO</text>
+        <circle cx="0" cy="30" r="3" fill="#1e293b" />
+        <text x="8" y="33" style="font-family: sans-serif; font-size: 9.5px; fill: #334155;">スイッチ COM</text>
+        <circle cx="132" cy="21" r="14" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+        <circle cx="132" cy="21" r="10" fill="#ef4444" />
+
+        <!-- LED Section -->
+        <rect x="4" y="50" width="152" height="44" rx="4" fill="#fef2f2" />
+        <circle cx="0" cy="68" r="3" fill="#dc2626" />
+        <text x="8" y="71" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #dc2626;">LED (＋)</text>
+        <circle cx="0" cy="84" r="3" fill="#ea580c" />
+        <text x="8" y="87" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #ea580c;">LED (−)</text>
+        <text x="132" y="75" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold; fill: #b91c1c;">LED内蔵</text>
+      </g>
+    </g>
+        
+    <!-- Seat 3 Module -->
+    <g transform="translate(640, 435)">
+      <!-- Outer Card -->
+      <rect x="0" y="0" width="460" height="145" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <!-- Header -->
+      <rect x="0" y="0" width="460" height="26" rx="8" fill="#f1f5f9" />
+      <rect x="0" y="16" width="460" height="10" fill="#f1f5f9" />
+      <text x="12" y="18" style="font-family: sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b;">席 3</text>
+      <text x="60" y="18" style="font-family: sans-serif; font-size: 11px; fill: #64748b;">(ボタン: <tspan fill="#2563eb" font-weight="600">GPIO 13 [Pin 33]</tspan> ／ LED: <tspan fill="#16a34a" font-weight="600">GPIO 19 [Pin 35]</tspan>)</text>
+
+      <!-- Terminals Left Edge -->
+      <!-- Button Input (NO) -->
+      <circle cx="0" cy="46" r="4.5" fill="#2563eb" />
+      <text x="8" y="50" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #2563eb;">ボタン信号 (NO)</text>
+
+      <!-- LED GPIO Input -->
+      <circle cx="0" cy="74" r="4.5" fill="#16a34a" />
+      <text x="8" y="78" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #16a34a;">LED 信号</text>
+
+      <!-- 5V Input -->
+      <circle cx="0" cy="102" r="4.5" fill="#dc2626" />
+      <text x="8" y="106" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #dc2626;">5V 電源</text>
+
+      <!-- GND Input -->
+      <circle cx="0" cy="126" r="4.5" fill="#1e293b" />
+      <text x="8" y="130" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #1e293b;">GND</text>
+
+      <!-- Internal Components -->
+      <!-- 1k Resistor for LED -->
+      <line x1="0" y1="74" x2="105" y2="74" stroke="#16a34a" stroke-width="2" />
+      <g transform="translate(105, 66)">
+        <rect x="0" y="0" width="38" height="16" rx="2" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+        <text x="19" y="11" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold;">1kΩ</text>
+      </g>
+      <line x1="143" y1="74" x2="175" y2="74" stroke="#16a34a" stroke-width="2" />
+
+      <!-- Transistor 2SC1815 -->
+      <g transform="translate(195, 74)">
+        <circle cx="0" cy="0" r="18" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+        <line x1="-7" y1="-10" x2="-7" y2="10" stroke="#1e293b" stroke-width="2" />
+        <!-- Base -->
+        <line x1="-20" y1="0" x2="-7" y2="0" stroke="#16a34a" stroke-width="2" />
+        <!-- Collector -->
+        <line x1="-7" y1="-5" x2="8" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <line x1="8" y1="-13" x2="18" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <!-- Emitter -->
+        <line x1="-7" y1="5" x2="8" y2="13" stroke="#1e293b" stroke-width="2" />
+        <line x1="8" y1="13" x2="18" y2="13" stroke="#1e293b" stroke-width="2" />
+        <polygon points="7,12 1,7 2,14" fill="#1e293b" />
+        <!-- Labels -->
+        <text x="-1" y="-21" text-anchor="middle" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #475569;">2SC1815</text>
+      </g>
+
+      <!-- Transistor Emitter (195+18=213, 74+13=87) to GND Line -->
+      <path d="M 213 87 L 230 87 L 230 126 L 0 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="230" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Transistor Collector (195+18=213, 74-13=61) to LED Cathode -->
+      <path d="M 213 61 L 245 61 L 245 118 L 290 118" stroke="#ea580c" stroke-width="2" fill="none" />
+
+      <!-- 5V to LED Anode -->
+      <path d="M 0 102 L 290 102" stroke="#dc2626" stroke-width="2" fill="none" />
+
+      <!-- Button NO to Switch Terminal 1 -->
+      <path d="M 0 46 L 290 46" stroke="#2563eb" stroke-width="2" fill="none" />
+
+      <!-- Button COM to GND -->
+      <path d="M 290 64 L 270 64 L 270 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="270" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Arcade Button Unit Box -->
+      <g transform="translate(290, 34)">
+        <rect x="0" y="0" width="160" height="98" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+        
+        <!-- Switch Section -->
+        <rect x="4" y="4" width="152" height="42" rx="4" fill="#eff6ff" />
+        <circle cx="0" cy="12" r="3" fill="#2563eb" />
+        <text x="8" y="15" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #1d4ed8;">スイッチ NO</text>
+        <circle cx="0" cy="30" r="3" fill="#1e293b" />
+        <text x="8" y="33" style="font-family: sans-serif; font-size: 9.5px; fill: #334155;">スイッチ COM</text>
+        <circle cx="132" cy="21" r="14" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+        <circle cx="132" cy="21" r="10" fill="#ef4444" />
+
+        <!-- LED Section -->
+        <rect x="4" y="50" width="152" height="44" rx="4" fill="#fef2f2" />
+        <circle cx="0" cy="68" r="3" fill="#dc2626" />
+        <text x="8" y="71" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #dc2626;">LED (＋)</text>
+        <circle cx="0" cy="84" r="3" fill="#ea580c" />
+        <text x="8" y="87" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #ea580c;">LED (−)</text>
+        <text x="132" y="75" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold; fill: #b91c1c;">LED内蔵</text>
+      </g>
+    </g>
+        
+    <!-- Seat 4 Module -->
+    <g transform="translate(640, 615)">
+      <!-- Outer Card -->
+      <rect x="0" y="0" width="460" height="145" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <!-- Header -->
+      <rect x="0" y="0" width="460" height="26" rx="8" fill="#f1f5f9" />
+      <rect x="0" y="16" width="460" height="10" fill="#f1f5f9" />
+      <text x="12" y="18" style="font-family: sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b;">席 4</text>
+      <text x="60" y="18" style="font-family: sans-serif; font-size: 11px; fill: #64748b;">(ボタン: <tspan fill="#2563eb" font-weight="600">GPIO 26 [Pin 37]</tspan> ／ LED: <tspan fill="#16a34a" font-weight="600">GPIO 16 [Pin 36]</tspan>)</text>
+
+      <!-- Terminals Left Edge -->
+      <!-- Button Input (NO) -->
+      <circle cx="0" cy="46" r="4.5" fill="#2563eb" />
+      <text x="8" y="50" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #2563eb;">ボタン信号 (NO)</text>
+
+      <!-- LED GPIO Input -->
+      <circle cx="0" cy="74" r="4.5" fill="#16a34a" />
+      <text x="8" y="78" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #16a34a;">LED 信号</text>
+
+      <!-- 5V Input -->
+      <circle cx="0" cy="102" r="4.5" fill="#dc2626" />
+      <text x="8" y="106" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #dc2626;">5V 電源</text>
+
+      <!-- GND Input -->
+      <circle cx="0" cy="126" r="4.5" fill="#1e293b" />
+      <text x="8" y="130" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #1e293b;">GND</text>
+
+      <!-- Internal Components -->
+      <!-- 1k Resistor for LED -->
+      <line x1="0" y1="74" x2="105" y2="74" stroke="#16a34a" stroke-width="2" />
+      <g transform="translate(105, 66)">
+        <rect x="0" y="0" width="38" height="16" rx="2" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+        <text x="19" y="11" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold;">1kΩ</text>
+      </g>
+      <line x1="143" y1="74" x2="175" y2="74" stroke="#16a34a" stroke-width="2" />
+
+      <!-- Transistor 2SC1815 -->
+      <g transform="translate(195, 74)">
+        <circle cx="0" cy="0" r="18" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+        <line x1="-7" y1="-10" x2="-7" y2="10" stroke="#1e293b" stroke-width="2" />
+        <!-- Base -->
+        <line x1="-20" y1="0" x2="-7" y2="0" stroke="#16a34a" stroke-width="2" />
+        <!-- Collector -->
+        <line x1="-7" y1="-5" x2="8" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <line x1="8" y1="-13" x2="18" y2="-13" stroke="#ea580c" stroke-width="2" />
+        <!-- Emitter -->
+        <line x1="-7" y1="5" x2="8" y2="13" stroke="#1e293b" stroke-width="2" />
+        <line x1="8" y1="13" x2="18" y2="13" stroke="#1e293b" stroke-width="2" />
+        <polygon points="7,12 1,7 2,14" fill="#1e293b" />
+        <!-- Labels -->
+        <text x="-1" y="-21" text-anchor="middle" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #475569;">2SC1815</text>
+      </g>
+
+      <!-- Transistor Emitter (195+18=213, 74+13=87) to GND Line -->
+      <path d="M 213 87 L 230 87 L 230 126 L 0 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="230" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Transistor Collector (195+18=213, 74-13=61) to LED Cathode -->
+      <path d="M 213 61 L 245 61 L 245 118 L 290 118" stroke="#ea580c" stroke-width="2" fill="none" />
+
+      <!-- 5V to LED Anode -->
+      <path d="M 0 102 L 290 102" stroke="#dc2626" stroke-width="2" fill="none" />
+
+      <!-- Button NO to Switch Terminal 1 -->
+      <path d="M 0 46 L 290 46" stroke="#2563eb" stroke-width="2" fill="none" />
+
+      <!-- Button COM to GND -->
+      <path d="M 290 64 L 270 64 L 270 126" stroke="#1e293b" stroke-width="2" fill="none" />
+      <circle cx="270" cy="126" r="2.5" fill="#1e293b" />
+
+      <!-- Arcade Button Unit Box -->
+      <g transform="translate(290, 34)">
+        <rect x="0" y="0" width="160" height="98" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+        
+        <!-- Switch Section -->
+        <rect x="4" y="4" width="152" height="42" rx="4" fill="#eff6ff" />
+        <circle cx="0" cy="12" r="3" fill="#2563eb" />
+        <text x="8" y="15" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #1d4ed8;">スイッチ NO</text>
+        <circle cx="0" cy="30" r="3" fill="#1e293b" />
+        <text x="8" y="33" style="font-family: sans-serif; font-size: 9.5px; fill: #334155;">スイッチ COM</text>
+        <circle cx="132" cy="21" r="14" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+        <circle cx="132" cy="21" r="10" fill="#ef4444" />
+
+        <!-- LED Section -->
+        <rect x="4" y="50" width="152" height="44" rx="4" fill="#fef2f2" />
+        <circle cx="0" cy="68" r="3" fill="#dc2626" />
+        <text x="8" y="71" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #dc2626;">LED (＋)</text>
+        <circle cx="0" cy="84" r="3" fill="#ea580c" />
+        <text x="8" y="87" style="font-family: sans-serif; font-size: 9.5px; font-weight: bold; fill: #ea580c;">LED (−)</text>
+        <text x="132" y="75" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; font-weight: bold; fill: #b91c1c;">LED内蔵</text>
+      </g>
+    </g>
+        
+
+  <!-- Footer Note -->
+  <text x="24" y="780" style="font-family: sans-serif; font-size: 11px; fill: #64748b;">※ すべての席の GND は共通です。ブレッドボードのマイナス電源ライン等で 1 つにまとめて Pi の GND ピンへ接続します。</text>
+</svg>

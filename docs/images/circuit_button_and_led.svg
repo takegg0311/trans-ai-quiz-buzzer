@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 470" width="840" height="470">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; fill: #64748b; }
+      .box-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 13px; font-weight: bold; fill: #334155; }
+      .pin-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; font-weight: 600; fill: #0f172a; }
+      .pin-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 10px; fill: #64748b; }
+      .part-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
+      .part-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 10px; fill: #64748b; }
+      .note-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 11px; fill: #475569; }
+      .wire-5v { stroke: #dc2626; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-btn { stroke: #2563eb; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-led { stroke: #16a34a; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-load { stroke: #ea580c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .pin-dot { fill: #ffffff; stroke-width: 2.5; }
+    </style>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="2" y="2" width="836" height="466" class="bg" />
+
+  <!-- Header -->
+  <text x="24" y="32" class="title">1 席分（ボタン 1 ＋ 回答権 LED）の総合配線図</text>
+  <text x="24" y="50" class="subtitle">例: ボタン 1（GPIO17: 入力）と LED 1（GPIO27: 5V トランジスタ駆動）を組み合わせた配線の全体像</text>
+
+  <!-- Raspberry Pi Header Section -->
+  <g transform="translate(24, 75)">
+    <rect x="0" y="0" width="180" height="280" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="14" y="24" class="box-label">Raspberry Pi（40 Pin）</text>
+
+    <!-- 5V -->
+    <text x="16" y="58" class="pin-label" style="fill: #dc2626;">5V 電源</text>
+    <text x="16" y="70" class="pin-sub">物理 Pin 2 または 4</text>
+    <circle cx="180" cy="62" r="5" class="pin-dot" stroke="#dc2626" />
+
+    <!-- Button GPIO -->
+    <text x="16" y="110" class="pin-label" style="fill: #2563eb;">GPIO 17（ボタン入力）</text>
+    <text x="16" y="122" class="pin-sub">物理 Pin 11 / 内蔵プルアップ</text>
+    <circle cx="180" cy="115" r="5" class="pin-dot" stroke="#2563eb" />
+
+    <!-- LED GPIO -->
+    <text x="16" y="165" class="pin-label" style="fill: #16a34a;">GPIO 27（LED制御）</text>
+    <text x="16" y="177" class="pin-sub">物理 Pin 13 / 出力</text>
+    <circle cx="180" cy="170" r="5" class="pin-dot" stroke="#16a34a" />
+
+    <!-- GND -->
+    <text x="16" y="225" class="pin-label" style="fill: #1e293b;">GND（共通接地）</text>
+    <text x="16" y="237" class="pin-sub">物理 Pin 6, 9, 14, 20...</text>
+    <circle cx="180" cy="230" r="5" class="pin-dot" stroke="#1e293b" />
+  </g>
+
+  <!-- Arcade Button Unit (Right side) -->
+  <g transform="translate(560, 75)">
+    <rect x="0" y="0" width="250" height="280" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="16" y="24" class="box-label">アーケードボタン（LED内蔵型）</text>
+
+    <!-- Button Switch Section -->
+    <rect x="14" y="36" width="222" height="100" rx="6" fill="#eff6ff" stroke="#bfdbfe" />
+    <text x="24" y="56" class="part-label" style="fill: #1d4ed8;">スイッチ端子（マイクロスイッチ）</text>
+
+    <circle cx="14" cy="80" r="4.5" fill="#2563eb" />
+    <text x="24" y="84" style="font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #1e293b;">端子 1（NO / 常開接点）</text>
+
+    <circle cx="14" cy="115" r="4.5" fill="#1e293b" />
+    <text x="24" y="119" style="font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #1e293b;">端子 2（COM / 共通端子）</text>
+
+    <!-- LED Section -->
+    <rect x="14" y="148" width="222" height="118" rx="6" fill="#fef2f2" stroke="#fecaca" />
+    <text x="24" y="170" class="part-label" style="fill: #b91c1c;">LED 端子（5V仕様）</text>
+
+    <circle cx="14" cy="195" r="4.5" fill="#dc2626" />
+    <text x="24" y="199" style="font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #dc2626;">LED（＋）アノード</text>
+
+    <circle cx="14" cy="235" r="4.5" fill="#ea580c" />
+    <text x="24" y="239" style="font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #ea580c;">LED（−）カソード</text>
+  </g>
+
+  <!-- Wiring connections between Pi, Transistor circuit, and Button -->
+  <!-- 1. 5V Wire: Pi (204, 137) -> Button LED (+) (574, 270) -->
+  <path d="M 204 137 L 300 137 L 300 100 L 520 100 L 520 270 L 574 270" class="wire-5v" />
+
+  <!-- 2. Button GPIO: Pi (204, 190) -> Button Switch NO (574, 155) -->
+  <path d="M 204 190 L 480 190 L 480 155 L 574 155" class="wire-btn" />
+
+  <!-- 3. Button GND: Button COM (574, 190) -> Common GND line -->
+  <path d="M 574 190 L 530 190 L 530 305 L 204 305" class="wire-gnd" />
+
+  <!-- 4. LED GPIO -> 1k Resistor -> Transistor Base -->
+  <path d="M 204 245 L 260 245" class="wire-led" />
+
+  <!-- 1k Resistor -->
+  <g transform="translate(260, 235)">
+    <rect x="0" y="0" width="55" height="20" rx="3" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+    <text x="27" y="14" text-anchor="middle" style="font-family: sans-serif; font-size: 10px; font-weight: bold;">1kΩ</text>
+  </g>
+
+  <path d="M 315 245 L 365 245" class="wire-led" />
+
+  <!-- Transistor Block -->
+  <g transform="translate(390, 245)">
+    <!-- Symbol -->
+    <circle cx="0" cy="0" r="22" fill="#ffffff" stroke="#64748b" stroke-width="1.5" />
+    <line x1="-8" y1="-12" x2="-8" y2="12" stroke="#1e293b" stroke-width="2.5" />
+    <line x1="-25" y1="0" x2="-8" y2="0" stroke="#16a34a" stroke-width="2.5" />
+    <circle cx="-25" cy="0" r="3" fill="#16a34a" />
+    <!-- Collector lead -->
+    <line x1="-8" y1="-6" x2="10" y2="-16" stroke="#ea580c" stroke-width="2" />
+    <line x1="10" y1="-16" x2="22" y2="-16" stroke="#ea580c" stroke-width="2" />
+    <circle cx="22" cy="-16" r="3" fill="#ea580c" />
+    <!-- Emitter lead -->
+    <line x1="-8" y1="6" x2="10" y2="16" stroke="#1e293b" stroke-width="2" />
+    <line x1="10" y1="16" x2="22" y2="16" stroke="#1e293b" stroke-width="2" />
+    <polygon points="10,16 2,10 4,18" fill="#1e293b" />
+    <circle cx="22" cy="16" r="3" fill="#1e293b" />
+
+    <text x="0" y="-28" text-anchor="middle" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #334155;">2SC1815</text>
+    <text x="-16" y="-6" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #16a34a;">B</text>
+    <text x="14" y="-22" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #ea580c;">C</text>
+    <text x="14" y="28" style="font-family: sans-serif; font-size: 8px; font-weight: bold; fill: #1e293b;">E</text>
+  </g>
+
+  <!-- Transistor Collector (390+22=412, 245-16=229) -> LED (-) (574, 310) -->
+  <path d="M 412 229 L 460 229 L 460 310 L 574 310" class="wire-load" />
+
+  <!-- Transistor Emitter (390+22=412, 245+16=261) -> Common GND line at y=305 -->
+  <path d="M 412 261 L 435 261 L 435 305" class="wire-gnd" />
+  <circle cx="435" cy="305" r="3.5" fill="#1e293b" />
+
+  <!-- Bottom Notes -->
+  <g transform="translate(24, 375)">
+    <rect x="0" y="0" width="786" height="75" rx="6" fill="#f1f5f9" />
+    <text x="14" y="18" class="note-text" style="font-weight: bold; fill: #1e293b;">【1席分の配線の要点】</text>
+    <text x="14" y="36" class="note-text">• 入力系（早押しボタン）: GPIO17 ── スイッチ NO端子 ／ スイッチ COM端子 ── GND（押すと GPIO が LOW）</text>
+    <text x="14" y="54" class="note-text">• 出力系（回答権LED）: GPIO27 ── 1kΩ ── トランジスタ B ／ トランジスタ E ── GND ／ 5V ── LED(＋) ／ LED(−) ── トランジスタ C</text>
+    <text x="14" y="68" class="note-text" style="font-size: 10px; fill: #64748b;">※GNDはすべて共通（ブレッドボードのマイナス電源ラインで1つにまとめてPiのGNDへ接続）にします。</text>
+  </g>
+</svg>

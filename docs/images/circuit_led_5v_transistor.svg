@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; fill: #64748b; }
+      .box-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 13px; font-weight: bold; fill: #334155; }
+      .pin-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12.5px; font-weight: 600; fill: #0f172a; }
+      .pin-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 10.5px; fill: #64748b; }
+      .part-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
+      .part-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 10.5px; fill: #64748b; }
+      .note-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 11px; fill: #475569; }
+      .wire-5v { stroke: #dc2626; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-gpio { stroke: #16a34a; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-load { stroke: #ea580c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .pin-dot { fill: #ffffff; stroke-width: 2.5; }
+      .pin-dot-5v { stroke: #dc2626; }
+      .pin-dot-gpio { stroke: #16a34a; }
+      .pin-dot-gnd { stroke: #1e293b; }
+    </style>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="2" y="2" width="776" height="426" class="bg" />
+
+  <!-- Header -->
+  <text x="24" y="32" class="title">LED の配線（5V トランジスタ駆動：LED 内蔵ボタン用）</text>
+  <text x="24" y="50" class="subtitle">5V 電源を NPN トランジスタ（2SC1815）でスイッチングし、5V 定格の LED 内蔵ボタンを安全・明るく点灯させます</text>
+
+  <!-- Raspberry Pi Box -->
+  <g transform="translate(24, 75)">
+    <rect x="0" y="0" width="170" height="235" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="14" y="24" class="box-label">Raspberry Pi</text>
+
+    <!-- 5V Power Pin -->
+    <text x="16" y="60" class="pin-label" style="fill: #dc2626;">5V 電源</text>
+    <text x="16" y="74" class="pin-sub">物理 Pin 2 または 4</text>
+    <circle cx="170" cy="65" r="5" class="pin-dot pin-dot-5v" />
+
+    <!-- GPIO Pin -->
+    <text x="16" y="145" class="pin-label" style="fill: #16a34a;">GPIO（LED）</text>
+    <text x="16" y="159" class="pin-sub">例: GPIO27（物理 Pin 13）</text>
+    <circle cx="170" cy="150" r="5" class="pin-dot pin-dot-gpio" />
+
+    <!-- GND Pin -->
+    <text x="16" y="210" class="pin-label">GND 端子</text>
+    <text x="16" y="224" class="pin-sub">Pin 6 / 9 / 14 / 20...</text>
+    <circle cx="170" cy="215" r="5" class="pin-dot pin-dot-gnd" />
+  </g>
+
+  <!-- 5V Wire from Pi to LED (+) -->
+  <!-- Pi 5V at (24+170=194, 75+65=140) -->
+  <path d="M 194 140 L 370 140" class="wire-5v" />
+
+  <!-- LED / Button LED Box -->
+  <g transform="translate(370, 100)">
+    <rect x="0" y="0" width="150" height="80" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5" />
+    <text x="75" y="22" text-anchor="middle" class="part-label" style="fill: #991b1b;">LED 内蔵ボタン</text>
+    <text x="75" y="36" text-anchor="middle" class="part-sub">（5V 定格 / 抵抗内蔵）</text>
+
+    <!-- Terminals inside -->
+    <circle cx="0" cy="40" r="4" fill="#dc2626" />
+    <text x="10" y="44" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #dc2626;">LED（＋）</text>
+
+    <circle cx="150" cy="40" r="4" fill="#ea580c" />
+    <text x="140" y="44" text-anchor="end" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #ea580c;">LED（−）</text>
+
+    <text x="75" y="70" text-anchor="middle" style="font-family: sans-serif; font-size: 9.5px; fill: #b91c1c;">※単体LEDの場合は1kΩを直列に追加</text>
+  </g>
+
+  <!-- Wire from LED(-) down to Collector -->
+  <!-- LED(-) is at (370+150=520, 100+40=140) -->
+  <!-- Collector lead is at (455, 203) -->
+  <path d="M 520 140 L 550 140 L 550 203 L 455 203" class="wire-load" />
+
+  <!-- Base Circuit: Pi GPIO at (194, 225) to Resistor -->
+  <path d="M 194 225 L 245 225" class="wire-gpio" />
+
+  <!-- Resistor 1k ohm (Base resistor) -->
+  <g transform="translate(245, 215)">
+    <rect x="0" y="0" width="60" height="20" rx="3" fill="#ffffff" stroke="#1e293b" stroke-width="2" />
+    <rect x="10" y="0" width="4" height="20" fill="#854d0e" />
+    <rect x="22" y="0" width="4" height="20" fill="#0f172a" />
+    <rect x="34" y="0" width="4" height="20" fill="#dc2626" />
+    <rect x="46" y="0" width="4" height="20" fill="#eab308" />
+    <text x="30" y="-5" text-anchor="middle" class="part-label">1kΩ</text>
+    <text x="30" y="32" text-anchor="middle" class="part-sub">ベース抵抗</text>
+  </g>
+
+  <!-- Wire from Resistor to Transistor Base -->
+  <!-- Resistor ends at 245+60=305. Base pin is at 385 -->
+  <path d="M 305 225 L 385 225" class="wire-gpio" />
+
+  <!-- NPN Transistor (2SC1815) Schematic Symbol -->
+  <!-- Center at (420, 225) -->
+  <g transform="translate(420, 225)">
+    <!-- Transistor outer circle -->
+    <circle cx="0" cy="0" r="34" fill="#ffffff" stroke="#64748b" stroke-width="1.5" />
+
+    <!-- Base bar (vertical) -->
+    <line x1="-12" y1="-18" x2="-12" y2="18" stroke="#1e293b" stroke-width="3" />
+
+    <!-- Base lead (horizontal in from left) -->
+    <line x1="-35" y1="0" x2="-12" y2="0" stroke="#16a34a" stroke-width="3" />
+    <circle cx="-35" cy="0" r="4" fill="#16a34a" />
+    <text x="-26" y="-8" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #16a34a;">B（ベース）</text>
+
+    <!-- Collector lead (top right) -->
+    <line x1="-12" y1="-8" x2="16" y2="-22" stroke="#ea580c" stroke-width="2.5" />
+    <line x1="16" y1="-22" x2="35" y2="-22" stroke="#ea580c" stroke-width="2.5" />
+    <circle cx="35" cy="-22" r="3.5" fill="#ea580c" />
+    <text x="18" y="-28" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #ea580c;">C（コレクタ）</text>
+
+    <!-- Emitter lead with NPN arrow (bottom right, pointing OUT) -->
+    <line x1="-12" y1="8" x2="16" y2="22" stroke="#1e293b" stroke-width="2.5" />
+    <line x1="16" y1="22" x2="35" y2="22" stroke="#1e293b" stroke-width="2.5" />
+    <!-- Arrow pointing outward towards emitter terminal -->
+    <polygon points="15,22 6,12 8,22" fill="#1e293b" stroke="#1e293b" />
+    <circle cx="35" cy="22" r="3.5" fill="#1e293b" />
+    <text x="18" y="38" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #1e293b;">E（エミッタ）</text>
+
+    <text x="0" y="-42" text-anchor="middle" class="part-label">2SC1815-GR (NPN)</text>
+  </g>
+
+  <!-- Wire from Transistor Emitter to GND -->
+  <!-- Emitter pin at (420+35=455, 225+22=247) -->
+  <!-- Pi GND at (194, 290) -->
+  <path d="M 455 247 L 490 247 L 490 290 L 194 290" class="wire-gnd" />
+
+  <!-- Transistor Pinout Diagram Box (TO-92 Package) -->
+  <g transform="translate(590, 75)">
+    <rect x="0" y="0" width="166" height="235" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="12" y="24" class="box-label">2SC1815 の足の並び</text>
+    <text x="12" y="38" class="pin-sub">TO-92 パッケージ（東芝 / UTC）</text>
+
+    <!-- TO-92 Transistor Drawing -->
+    <g transform="translate(48, 55)">
+      <!-- Package flat face view -->
+      <path d="M 5,20 A 30,30 0 0,1 65,20 L 65,55 L 5,55 Z" fill="#334155" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="8" y="25" width="54" height="25" rx="2" fill="#1e293b" />
+      <!-- Text on package -->
+      <text x="35" y="38" text-anchor="middle" style="font-family: monospace; font-size: 8px; fill: #ffffff; font-weight: bold;">C1815</text>
+      <text x="35" y="47" text-anchor="middle" style="font-family: monospace; font-size: 7px; fill: #94a3b8;">GR</text>
+
+      <!-- Leads -->
+      <line x1="16" y1="55" x2="16" y2="105" stroke="#94a3b8" stroke-width="2.5" />
+      <line x1="35" y1="55" x2="35" y2="105" stroke="#94a3b8" stroke-width="2.5" />
+      <line x1="54" y1="55" x2="54" y2="105" stroke="#94a3b8" stroke-width="2.5" />
+
+      <!-- Pin numbers & letters -->
+      <text x="16" y="118" text-anchor="middle" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #1e293b;">E</text>
+      <text x="16" y="129" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; fill: #64748b;">(1)</text>
+
+      <text x="35" y="118" text-anchor="middle" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #ea580c;">C</text>
+      <text x="35" y="129" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; fill: #64748b;">(2)</text>
+
+      <text x="54" y="118" text-anchor="middle" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #16a34a;">B</text>
+      <text x="54" y="129" text-anchor="middle" style="font-family: sans-serif; font-size: 9px; fill: #64748b;">(3)</text>
+    </g>
+
+    <!-- Legend note -->
+    <rect x="8" y="195" width="150" height="30" rx="4" fill="#f1f5f9" />
+    <text x="14" y="208" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #334155;">平らな印字面を手前にして</text>
+    <text x="14" y="220" style="font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #0284c7;">左から E ・ C ・ B</text>
+  </g>
+
+  <!-- Bottom Notes -->
+  <g transform="translate(24, 325)">
+    <rect x="0" y="0" width="732" height="92" rx="6" fill="#f1f5f9" />
+    <text x="14" y="18" class="note-text" style="font-weight: bold; fill: #b91c1c;">⚠️ 注意: 5V（物理ピン 2 または 4）を絶対に GPIO ピンに直結させないでください。Pi が破損します。</text>
+    <text x="14" y="36" class="note-text">• 仕組み: GPIO を HIGH（3.3V）にすると、1kΩ 抵抗を通してベース（B）に電流が流れ、コレクタ（C）〜エミッタ（E）間が導通して 5V LED が点灯します。</text>
+    <text x="14" y="54" class="note-text">• LED 内蔵ボタン: 内部に電流制限抵抗が組み込まれているため、追加の抵抗なしで 5V とコレクタ端子に直結できます。</text>
+    <text x="14" y="72" class="note-text">• 単体 LED の場合: 赤色 LED などの単体部品を 5V で点灯させる際は、破損防止のため LED の前に必ず 1kΩ 抵抗を入れてください。</text>
+  </g>
+</svg>
